@@ -36,32 +36,32 @@ NODE *newNode(int key)
     return node;
 }
 
-NODE *rightRotate(NODE *y)
+NODE *rightRotate(NODE *node)
 {
-    NODE *x = y->left;
-    NODE *T2 = x->right;
+    NODE *pivot = node->left;
+    NODE *pivotr = pivot->right;
 
-    x->right = y;
-    y->left = T2;
+    pivot->right = node;
+    node->left = pivotr;
 
-    y->height = getMax(getHeight(y->left), getHeight(y->right)) + 1;
-    x->height = getMax(getHeight(x->left), getHeight(x->right)) + 1;
+    node->height = getMax(getHeight(node->left), getHeight(node->right)) + 1;
+    pivot->height = getMax(getHeight(pivot->left), getHeight(pivot->right)) + 1;
 
-    return x;
+    return pivot;
 }
 
-NODE *leftRotate(NODE *x)
+NODE *leftRotate(NODE *node)
 {
-    NODE *y = x->right;
-    NODE *T2 = y->left;
+    NODE *pivot = node->right;
+    NODE *pivotl = pivot->left;
 
-    y->left = x;
-    x->right = T2;
+    pivot->left = node;
+    node->right = pivotl;
 
-    x->height = getMax(getHeight(x->left), getHeight(x->right)) + 1;
-    y->height = getMax(getHeight(y->left), getHeight(y->right)) + 1;
+    node->height = getMax(getHeight(node->left), getHeight(node->right)) + 1;
+    pivot->height = getMax(getHeight(pivot->left), getHeight(pivot->right)) + 1;
 
-    return y;
+    return pivot;
 }
 
 NODE *insert(NODE *node, int key, int *rotations, char **rotation_types, int *rotation_count)
