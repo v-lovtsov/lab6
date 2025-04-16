@@ -6,19 +6,19 @@
 
 int main()
 {
-    char *line1 = generateString(100);
-    char *line2 = generateString(2000000);
+    char *inputn = generateString(100);
+    char *input_tree = generateString(2000000);
 
     // Чтение первой строки
-    fgets(line1, sizeof(line1), stdin);
-    rmnline(line1);
-    if (line1 == NULL || strlen(line1) == 0)
+    fgets(inputn, sizeof(inputn), stdin);
+    rmnline(inputn);
+    if (inputn == NULL || strlen(inputn) == 0)
     {
         printf("Empty input\n");
         return 0;
     }
 
-    int N = atoi(line1);
+    int N = atoi(inputn);
     if (N < 0 || N > 2000000)
     {
         printf("Bad input\n");
@@ -26,13 +26,13 @@ int main()
     }
 
     // Чтение второй строки
-    if (fgets(line2, sizeof(line2), stdin) == NULL)
+    if (fgets(input_tree, sizeof(input_tree), stdin) == NULL)
     {
         printf("Bad input\n");
         return 0;
     }
 
-    char *token = strtok(line2, " ");
+    char *token = strtok(input_tree, " ");
     int count = 0;
     int *numbers = (int *)malloc(N * sizeof(int));
 
